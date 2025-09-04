@@ -61,6 +61,23 @@ CREATE TABLE testingpatient (
     PRIMARY KEY (Patient, Doctor, medicine)
 );
 ```
+
+---
+
+## 🖼️ Screenshots
+
+### Login Screen
+![Login](Images/Login.png)
+
+### Sign Up Screen
+![Login](Images/Signup.png)
+
+### Patient Search
+![Search Feature](Images/search.png)
+
+### Prescription Autofill
+![Autofill Feature](Images/Autofillpage.png)
+
 ---
 
 ## ⚙️ Setup & Installation
