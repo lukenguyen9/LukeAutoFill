@@ -40,4 +40,4 @@ The project is designed to help pharmacies and medical offices reduce manual dat
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Prescription-Autofill-Search.git
+   git clone https://github.com/lukenguyen9/LukeAutoFill.git
