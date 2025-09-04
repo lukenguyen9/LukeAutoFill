@@ -36,6 +36,33 @@ The project is designed to help pharmacies and medical offices reduce manual dat
 
 ---
 
+## 📂 Database Setup
+
+This project uses **SQL Server** as the backend database.  
+You’ll need to create a database and the required tables before running the application.
+
+### 1. Create the Database
+```sql
+CREATE DATABASE LukeLoginTest;
+```
+
+### 2. Create the Tables
+```sql
+CREATE TABLE users (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(100) NOT NULL,
+    email NVARCHAR(255) UNIQUE NOT NULL,
+    password NVARCHAR(100) NOT NULL
+);
+CREATE TABLE testingpatient (
+    Patient NVARCHAR(100) NOT NULL,
+    Doctor NVARCHAR(100),
+    medicine NVARCHAR(100),
+    PRIMARY KEY (Patient, Doctor, medicine)
+);
+```
+---
+
 ## ⚙️ Setup & Installation
 
 1. Clone the repository:
