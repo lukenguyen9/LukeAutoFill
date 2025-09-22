@@ -134,7 +134,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "SignUp";
-            this.Text = "SignUp";
+            this.Text = "SignUp - Designed by Luke Nguyen";
             this.ResumeLayout(false);
             this.PerformLayout();
 

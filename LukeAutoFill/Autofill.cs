@@ -17,6 +17,7 @@ namespace LukeAutoFill
         private string name;
         private string doctor;
         private string medicine;
+        private decimal price;
 
         public Autofill()
         {
@@ -73,12 +74,13 @@ namespace LukeAutoFill
             // 1. Reset fields every time
             textBoxName.Text = "no value";
             textBoxMedicine.Text = "no value";
-            textBoxInstruction.Text = "no value";
+            textBoxPrice.Text = "no value";
             textBoxDoctor.Text = "no value";
 
             name = string.Empty;
             medicine = string.Empty;
             doctor = string.Empty;
+            price = 0m;
 
             // 2. Extract values or leave as "no value"
 
@@ -104,11 +106,11 @@ namespace LukeAutoFill
                     textBoxMedicine.Text = medicine;
             }
 
-            if (text.Contains("Takes"))
+            if (text.Contains("Price:"))
             {
-                int start = text.IndexOf("Takes") + "Takes".Length;
+                int start = text.IndexOf("Price:") + "Price:".Length;
 
-                // Skip whitespace after "Takes"
+                // Skip whitespace after "Price:"
                 while (start < text.Length && char.IsWhiteSpace(text[start]))
                     start++;
 
@@ -117,8 +119,9 @@ namespace LukeAutoFill
 
                 string result = text.Substring(start, end - start).Trim();
                 if (!string.IsNullOrEmpty(result))
-                    textBoxInstruction.Text = result;
+                    textBoxPrice.Text = result;
             }
+
 
             if (text.Contains("Doctor:"))
             {
@@ -131,23 +134,74 @@ namespace LukeAutoFill
                     textBoxDoctor.Text = doctor;
             }
         }
-        
+
 
         private void SaveToDatabase(object sender, EventArgs e)
         {
+
+            /*    string connectionString = "Server=acarepharmacy00\\sqlexpress;Database=LukeLoginTest;Trusted_Connection=True;";
+
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+
+                        string query = "INSERT INTO testingpatient (Patient, Doctor, medicine) VALUES (@Patient, @Doctor, @medicine)";
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            // ✅ Use the textboxes so user can edit before saving
+                            cmd.Parameters.AddWithValue("@Patient", textBoxName.Text);
+                            cmd.Parameters.AddWithValue("@Doctor", textBoxDoctor.Text);
+                            cmd.Parameters.AddWithValue("@medicine", textBoxMedicine.Text);
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        conn.Close();
+                    }
+
+                    MessageBox.Show("Record saved to 'testingpatient'.");
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 2627 || ex.Number == 2601)
+                    {
+                        MessageBox.Show("Error: A record with the same key already exists.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Database error: " + ex.Message);
+                    }
+                }*/
+
             string connectionString = "Server=acarepharmacy00\\sqlexpress;Database=LukeLoginTest;Trusted_Connection=True;";
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO testingpatient (Patient, Doctor, medicine) VALUES (@Patient, @Doctor, @medicine)";
+                    string query = "INSERT INTO testingpatient (Patient, Doctor, medicine, Price) " +
+                                   "VALUES (@Patient, @Doctor, @medicine, @Price)";
+
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Patient", name);
-                        cmd.Parameters.AddWithValue("@Doctor", doctor);
-                        cmd.Parameters.AddWithValue("@medicine", medicine);
+                        // Use the textboxes so user can edit before saving
+                        cmd.Parameters.AddWithValue("@Patient", textBoxName.Text);
+                        cmd.Parameters.AddWithValue("@Doctor", textBoxDoctor.Text);
+                        cmd.Parameters.AddWithValue("@medicine", textBoxMedicine.Text);
+
+                        // Convert price textbox to decimal safely
+                        if (decimal.TryParse(textBoxPrice.Text, out decimal price))
+                        {
+                            cmd.Parameters.AddWithValue("@Price", price);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Price", 0m); // default if empty/invalid
+                        }
 
                         cmd.ExecuteNonQuery();
                     }
@@ -168,7 +222,6 @@ namespace LukeAutoFill
                     MessageBox.Show("Database error: " + ex.Message);
                 }
             }
-
         }
 
         private void buttonSearch(object sender, EventArgs e)
@@ -176,6 +229,29 @@ namespace LukeAutoFill
             // Open the SearchAutoFill form
             SearchAutoFill searchForm = new SearchAutoFill();
             searchForm.Show(); // or ShowDialog() if you want it modal
+            this.Close();
+        }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open the SearchAutoFill form
+            SearchAutoFill searchForm = new SearchAutoFill();
+            searchForm.Show();
+            this.Close();
+        }
+
+        private void signUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SignUp signUpForm = new SignUp();
+            signUpForm.Show();
+            this.Close();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+            this.Close();
         }
     }
 }
