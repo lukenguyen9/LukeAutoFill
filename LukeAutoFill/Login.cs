@@ -55,12 +55,9 @@ namespace LukeAutoFill
                             {
                                 user = new User
                                 {
-                                    //Id = reader.GetInt32(0),
                                     Name = reader.GetString(1),
                                     Email = reader.GetString(2),
-                                    //Phone = reader.GetString(3),
-                                    //Address = reader.GetString(4),
-                                    Password = reader.GetString(5)
+                                    Password = reader.GetString(3)
                                 };
 
                                 Autofill autofillForm = new Autofill();
@@ -94,8 +91,6 @@ namespace LukeAutoFill
             public int Id { get; set; }
             public string Name { get; set; }
             public string Email { get; set; }
-            public string Phone { get; set; }
-            public string Address { get; set; }
             public string Password { get; set; }
         }
 
