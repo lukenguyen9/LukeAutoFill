@@ -60,7 +60,7 @@ namespace LukeAutoFill
                                     Email = reader.GetString(2),
                                     //Phone = reader.GetString(3),
                                     //Address = reader.GetString(4),
-                                    Password = reader.GetString(3)
+                                    Password = reader.GetString(5)
                                 };
 
                                 Autofill autofillForm = new Autofill();
@@ -94,8 +94,8 @@ namespace LukeAutoFill
             public int Id { get; set; }
             public string Name { get; set; }
             public string Email { get; set; }
-            //public string Phone { get; set; }
-            //public string Address { get; set; }
+            public string Phone { get; set; }
+            public string Address { get; set; }
             public string Password { get; set; }
         }
 
