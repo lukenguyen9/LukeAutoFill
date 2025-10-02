@@ -76,7 +76,7 @@ CREATE TABLE testingpatient (
 ![Search Feature](Images/search.png)
 
 ### Prescription Autofill
-![Autofill Feature](Images/Screenshot 2025-10-02 111422.png)
+![Autofill Feature](Images/Autofill2.png)
 
 ---
 
