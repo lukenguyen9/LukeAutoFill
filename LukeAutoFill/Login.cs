@@ -55,7 +55,6 @@ namespace LukeAutoFill
                             {
                                 user = new User
                                 {
-                                    //Id = reader.GetInt32(0),
                                     Name = reader.GetString(1),
                                     Email = reader.GetString(2),
                                     Password = reader.GetString(3)
