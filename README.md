@@ -58,6 +58,8 @@ CREATE TABLE testingpatient (
     Patient NVARCHAR(100) NOT NULL,
     Doctor NVARCHAR(100),
     medicine NVARCHAR(100),
+    Price DECIMAL(10,2),
+    CreatedAt DATETIME DEFAULT GETDATE()
     PRIMARY KEY (Patient, Doctor, medicine)
 );
 ```
