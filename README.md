@@ -73,10 +73,15 @@ CREATE TABLE testingpatient (
 ![Login](Images/Signup.png)
 
 ### Patient Search
-![Search Feature](Images/search.png)
+![Search Feature](Images/Search2.png)
 
 ### Prescription Autofill
 ![Autofill Feature](Images/Autofill2.png)
+
+### Profit Charts
+![Autofill Feature](Images/Profit1.png)
+
+![Autofill Feature](Images/Profit2.png)
 
 ---
 
