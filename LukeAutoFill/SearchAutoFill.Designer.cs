@@ -112,9 +112,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.searchToolStripMenuItem,
-            this.logOutToolStripMenuItem,
+            this.profitChartToolStripMenuItem,
             this.signUpToolStripMenuItem,
-            this.profitChartToolStripMenuItem});
+            this.logOutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -164,6 +164,7 @@
             this.profitChartToolStripMenuItem.Name = "profitChartToolStripMenuItem";
             this.profitChartToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.profitChartToolStripMenuItem.Text = "Profit Chart";
+            this.profitChartToolStripMenuItem.Click += new System.EventHandler(this.profitChartToolStripMenuItem_Click);
             // 
             // SearchAutoFill
             // 

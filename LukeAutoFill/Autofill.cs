@@ -253,5 +253,12 @@ namespace LukeAutoFill
             loginForm.Show();
             this.Close();
         }
+
+        private void profitChartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProfitChart profitChartForm = new ProfitChart();
+            profitChartForm.Show();
+            this.Close();
+        }
     }
 }
